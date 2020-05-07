@@ -216,7 +216,7 @@ class Task
     /**
      * @var string The process of the task
      *
-     * 
+     * @Assert\Url
      * @Assert\Length(
      *      max = 255
      * )
