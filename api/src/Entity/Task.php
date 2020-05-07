@@ -70,7 +70,7 @@ class Task
 
     /**
      * @var string The name of this Task
-     * @example my JobPosting
+     * @example Task name
      *
      * @Gedmo\Versioned
      * @Assert\Length(
@@ -83,8 +83,8 @@ class Task
     private $name;
 
     /**
-     * @var string The description of this JobPosting
-     * @example This is the best JobPosting ever
+     * @var string The description of this Task
+     * @example Task description
      *
      * @Gedmo\Versioned
      * @Assert\Length(

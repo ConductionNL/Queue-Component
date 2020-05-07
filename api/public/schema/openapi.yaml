@@ -1927,9 +1927,9 @@ paths:
   '/employees/{id}/audit_trail':
     get:
       tags:
-        - Queue
-      operationId: get_audit_trailQueueItem
-      summary: 'Retrieves a Queue resource.'
+        - Task
+      operationId: get_audit_trailTaskItem
+      summary: 'Retrieves a Task resource.'
       parameters:
         -
           name: id
@@ -2010,47 +2010,47 @@ paths:
           in: query
       responses:
         200:
-          description: 'Queue resource response'
+          description: 'Task resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
         404:
           description: 'Resource not found'
       produces:
@@ -2058,9 +2058,9 @@ paths:
   '/employees/{id}/change_log':
     get:
       tags:
-        - Queue
-      operationId: get_change_logsQueueItem
-      summary: 'Retrieves a Queue resource.'
+        - Task
+      operationId: get_change_logsTaskItem
+      summary: 'Retrieves a Task resource.'
       parameters:
         -
           name: id
@@ -2141,66 +2141,66 @@ paths:
           in: query
       responses:
         200:
-          description: 'Queue resource response'
+          description: 'Task resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
         404:
           description: 'Resource not found'
       produces:
         - application/health+json
-  /queues:
+  /tasks:
     get:
       tags:
-        - Queue
-      operationId: getQueueCollection
-      summary: 'Retrieves the collection of Queue resources.'
+        - Task
+      operationId: getTaskCollection
+      summary: 'Retrieves the collection of Task resources.'
       responses:
         200:
-          description: 'Queue collection response'
+          description: 'Task collection response'
           content:
             application/ld+json:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Queue:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Task:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -2210,7 +2210,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Queue:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Task:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -2220,57 +2220,57 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/json+hal:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/vnd.api+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/json+vnd.api:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/health+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/json+health:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             application/x-yaml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             text/csv:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
             text/html:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Queue-read'
+                  $ref: '#/components/schemas/Task-read'
       parameters:
         -
           name: 'order[id]'
@@ -2299,6 +2299,273 @@ paths:
             enum:
               - asc
               - desc
+        -
+          name: 'order[endpoint]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[type]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[status]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[requestHeaders]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[requestBody]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[responseHeaders]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[responseBody]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[responseCode]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[webHookHeaders]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[webHookEndpoint]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[webHookStatus]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[webHookCode]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[application]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[organization]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[process]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateToTrigger]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateTriggered]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'dateToTrigger[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateToTrigger[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateToTrigger[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateToTrigger[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateTriggered[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateTriggered[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateTriggered[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateTriggered[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: id
           in: query
@@ -2347,6 +2614,294 @@ paths:
               type: string
           style: form
           explode: true
+        -
+          name: endpoint
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'endpoint[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: type
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'type[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: status
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'status[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: requestHeaders
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'requestHeaders[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: requestBody
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'requestBody[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: responseHeaders
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'responseHeaders[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: responseBody
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'responseBody[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: responseCode
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'responseCode[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: webHookHeaders
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'webHookHeaders[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: webHookEndpoint
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'webHookEndpoint[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: webHookStatus
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'webHookStatus[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: webHookCode
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'webHookCode[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: application
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'application[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: organization
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'organization[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: process
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'process[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: dateToTrigger
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateToTrigger[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: dateTriggered
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateTriggered[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: dateCreated
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: dateModified
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[]'
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -2430,58 +2985,58 @@ paths:
         - application/health+json
     post:
       tags:
-        - Queue
-      operationId: postQueueCollection
-      summary: 'Creates a Queue resource.'
+        - Task
+      operationId: postTaskCollection
+      summary: 'Creates a Task resource.'
       responses:
         201:
-          description: 'Queue resource created'
+          description: 'Task resource created'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
           links:
-            GetQueueItem:
+            GetTaskItem:
               parameters:
                 id: '$response.body#/id'
-              operationId: getQueueItem
-              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /queues/{id}`.'
+              operationId: getTaskItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /tasks/{id}`.'
         400:
           description: 'Invalid input'
         404:
@@ -2490,44 +3045,44 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Queue:jsonld-write'
+              $ref: '#/components/schemas/Task:jsonld-write'
           application/json+ld:
             schema:
-              $ref: '#/components/schemas/Queue:jsonld-write'
+              $ref: '#/components/schemas/Task:jsonld-write'
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json+hal:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json+vnd.api:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/health+json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json+health:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Queue-write'
-        description: 'The new Queue resource'
+              $ref: '#/components/schemas/Task-write'
+        description: 'The new Task resource'
       parameters:
         -
           name: Authorization
@@ -2558,12 +3113,12 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
-  '/queues/{id}':
+  '/tasks/{id}':
     get:
       tags:
-        - Queue
-      operationId: getQueueItem
-      summary: 'Retrieves a Queue resource.'
+        - Task
+      operationId: getTaskItem
+      summary: 'Retrieves a Task resource.'
       parameters:
         -
           name: id
@@ -2644,56 +3199,56 @@ paths:
           in: query
       responses:
         200:
-          description: 'Queue resource response'
+          description: 'Task resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
         404:
           description: 'Resource not found'
       produces:
         - application/health+json
     put:
       tags:
-        - Queue
-      operationId: putQueueItem
-      summary: 'Replaces the Queue resource.'
+        - Task
+      operationId: putTaskItem
+      summary: 'Replaces the Task resource.'
       parameters:
         -
           name: id
@@ -2732,47 +3287,47 @@ paths:
           in: header
       responses:
         200:
-          description: 'Queue resource updated'
+          description: 'Task resource updated'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Queue:jsonld-read'
+                $ref: '#/components/schemas/Task:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Queue-read'
+                $ref: '#/components/schemas/Task-read'
         400:
           description: 'Invalid input'
         404:
@@ -2781,52 +3336,52 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Queue:jsonld-write'
+              $ref: '#/components/schemas/Task:jsonld-write'
           application/json+ld:
             schema:
-              $ref: '#/components/schemas/Queue:jsonld-write'
+              $ref: '#/components/schemas/Task:jsonld-write'
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json+hal:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json+vnd.api:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/health+json:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/json+health:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Queue-write'
+              $ref: '#/components/schemas/Task-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Queue-write'
-        description: 'The updated Queue resource'
+              $ref: '#/components/schemas/Task-write'
+        description: 'The updated Task resource'
     delete:
       tags:
-        - Queue
-      operationId: deleteQueueItem
-      summary: 'Removes the Queue resource.'
+        - Task
+      operationId: deleteTaskItem
+      summary: 'Removes the Task resource.'
       responses:
         204:
-          description: 'Queue resource deleted'
+          description: 'Task resource deleted'
         404:
           description: 'Resource not found'
       parameters:
@@ -3253,7 +3808,7 @@ components:
         '@type':
           readOnly: true
           type: string
-    Queue-read:
+    Task-read:
       type: object
       description: 'All properties that the entity Employee holds.'
       properties:
@@ -3263,10 +3818,175 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
-    Queue-write:
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this JobPosting'
+          type: string
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        status:
+          description: 'The status of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        responseHeaders:
+          description: 'The the headers of the response'
+          type: array
+          items:
+            type: string
+        responseBody:
+          description: 'The body of the response'
+          type: array
+          items:
+            type: string
+        responseCode:
+          readOnly: true
+          description: 'The code of the response'
+          type: integer
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        webHookEndpoint:
+          description: 'The endpoint of the webHook'
+          type: string
+        webHookStatus:
+          description: 'The status of the webHook'
+          type: string
+        webHookCode:
+          readOnly: true
+          description: 'The code of the webHook'
+          type: integer
+        application:
+          description: 'The application that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        organization:
+          description: 'The organization that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        process:
+          description: 'The process of the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        dateToTrigger:
+          description: 'The date the task has to be triggered'
+          type: string
+          format: date-time
+        dateTriggered:
+          description: 'The date the task has been triggered'
+          type: string
+          format: date-time
+        dateCreated:
+          readOnly: true
+          description: 'The moment this request was created'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        dateModified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+      required:
+        - name
+    Task-write:
       type: object
       description: 'All properties that the entity Employee holds.'
-    'Queue:jsonld-read':
+      required:
+        - name
+      properties:
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this JobPosting'
+          type: string
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        status:
+          description: 'The status of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        responseHeaders:
+          description: 'The the headers of the response'
+          type: array
+          items:
+            type: string
+        responseBody:
+          description: 'The body of the response'
+          type: array
+          items:
+            type: string
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        webHookEndpoint:
+          description: 'The endpoint of the webHook'
+          type: string
+        webHookStatus:
+          description: 'The status of the webHook'
+          type: string
+        application:
+          description: 'The application that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        organization:
+          description: 'The organization that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        process:
+          description: 'The process of the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        dateToTrigger:
+          description: 'The date the task has to be triggered'
+          type: string
+          format: date-time
+        dateTriggered:
+          description: 'The date the task has been triggered'
+          type: string
+          format: date-time
+    'Task:jsonld-read':
       type: object
       description: 'All properties that the entity Employee holds.'
       properties:
@@ -3285,9 +4005,104 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
-    'Queue:jsonld-write':
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this JobPosting'
+          type: string
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        status:
+          description: 'The status of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        responseHeaders:
+          description: 'The the headers of the response'
+          type: array
+          items:
+            type: string
+        responseBody:
+          description: 'The body of the response'
+          type: array
+          items:
+            type: string
+        responseCode:
+          readOnly: true
+          description: 'The code of the response'
+          type: integer
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        webHookEndpoint:
+          description: 'The endpoint of the webHook'
+          type: string
+        webHookStatus:
+          description: 'The status of the webHook'
+          type: string
+        webHookCode:
+          readOnly: true
+          description: 'The code of the webHook'
+          type: integer
+        application:
+          description: 'The application that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        organization:
+          description: 'The organization that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        process:
+          description: 'The process of the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        dateToTrigger:
+          description: 'The date the task has to be triggered'
+          type: string
+          format: date-time
+        dateTriggered:
+          description: 'The date the task has been triggered'
+          type: string
+          format: date-time
+        dateCreated:
+          readOnly: true
+          description: 'The moment this request was created'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        dateModified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+      required:
+        - name
+    'Task:jsonld-write':
       type: object
       description: 'All properties that the entity Employee holds.'
+      required:
+        - name
       properties:
         '@context':
           readOnly: true
@@ -3298,6 +4113,75 @@ components:
         '@type':
           readOnly: true
           type: string
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this JobPosting'
+          type: string
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        status:
+          description: 'The status of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        responseHeaders:
+          description: 'The the headers of the response'
+          type: array
+          items:
+            type: string
+        responseBody:
+          description: 'The body of the response'
+          type: array
+          items:
+            type: string
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        webHookEndpoint:
+          description: 'The endpoint of the webHook'
+          type: string
+        webHookStatus:
+          description: 'The status of the webHook'
+          type: string
+        application:
+          description: 'The application that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        organization:
+          description: 'The organization that made the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        process:
+          description: 'The process of the task'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        dateToTrigger:
+          description: 'The date the task has to be triggered'
+          type: string
+          format: date-time
+        dateTriggered:
+          description: 'The date the task has been triggered'
+          type: string
+          format: date-time
 definitions:
   AuditTrail-read:
     properties:
@@ -3403,12 +4287,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-07 13:17:36'
+        example: '2020-05-07 14:04:36'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-07 13:17:36'
+        example: '2020-05-07 14:04:36'
     required: []
   AuditTrail-write:
     properties:
@@ -3456,12 +4340,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-07 13:17:36'
+        example: '2020-05-07 14:04:36'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-07 13:17:36'
+        example: '2020-05-07 14:04:36'
     required: []
   ChangeLog-write:
     properties:
@@ -3471,7 +4355,7 @@ definitions:
         example: 'This log line is suspicius'
         maxLength: 2555
     required: []
-  Queue-read:
+  Task-read:
     properties:
       id:
         description: ''
@@ -3488,9 +4372,90 @@ definitions:
         type: string
         example: 'This is the best JobPosting ever'
         maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        example: endpoint
+        maxLength: 255
+      type:
+        description: 'The type of the task'
+        type: string
+        example: type
+        maxLength: 255
+      status:
+        description: 'The status of the task'
+        type: string
+        example: finished
+        maxLength: 255
+      requestHeaders:
+        description: 'The request headers supplied by client'
+        type: array
+      requestBody:
+        description: 'The request body supplied by client'
+        type: array
+      responseHeaders:
+        description: 'The the headers of the response'
+        type: array
+      responseBody:
+        description: 'The body of the response'
+        type: array
+      responseCode:
+        description: 'The code of the response'
+        type: int
+        example: '404'
+      webHookHeaders:
+        description: 'The the headers of the webHook'
+        type: array
+      webHookEndpoint:
+        description: 'The endpoint of the webHook'
+        type: string
+        example: endpoint
+        maxLength: 255
+      webHookStatus:
+        description: 'The status of the webHook'
+        type: string
+        example: finished
+        maxLength: 255
+      webHookCode:
+        description: 'The code of the webHook'
+        type: int
+        example: '404'
+      application:
+        description: 'The application that made the task'
+        type: string
+        format: url
+        maxLength: 255
+      organization:
+        description: 'The organization that made the task'
+        type: string
+        format: url
+        maxLength: 255
+      process:
+        description: 'The process of the task'
+        type: string
+        format: url
+        maxLength: 255
+      dateToTrigger:
+        description: 'The date the task has to be triggered'
+        type: \DateTime
+        example: 01-01-2020
+      dateTriggered:
+        description: 'The date the task has been triggered'
+        type: \DateTime
+        example: 01-01-2020
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-07 14:04:36'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-07 14:04:36'
     required:
       - name
-  Queue-write:
+  Task-write:
     properties:
       name:
         description: 'The name of this Task'
@@ -3502,6 +4467,69 @@ definitions:
         type: string
         example: 'This is the best JobPosting ever'
         maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        example: endpoint
+        maxLength: 255
+      type:
+        description: 'The type of the task'
+        type: string
+        example: type
+        maxLength: 255
+      status:
+        description: 'The status of the task'
+        type: string
+        example: finished
+        maxLength: 255
+      requestHeaders:
+        description: 'The request headers supplied by client'
+        type: array
+      requestBody:
+        description: 'The request body supplied by client'
+        type: array
+      responseHeaders:
+        description: 'The the headers of the response'
+        type: array
+      responseBody:
+        description: 'The body of the response'
+        type: array
+      webHookHeaders:
+        description: 'The the headers of the webHook'
+        type: array
+      webHookEndpoint:
+        description: 'The endpoint of the webHook'
+        type: string
+        example: endpoint
+        maxLength: 255
+      webHookStatus:
+        description: 'The status of the webHook'
+        type: string
+        example: finished
+        maxLength: 255
+      application:
+        description: 'The application that made the task'
+        type: string
+        format: url
+        maxLength: 255
+      organization:
+        description: 'The organization that made the task'
+        type: string
+        format: url
+        maxLength: 255
+      process:
+        description: 'The process of the task'
+        type: string
+        format: url
+        maxLength: 255
+      dateToTrigger:
+        description: 'The date the task has to be triggered'
+        type: \DateTime
+        example: 01-01-2020
+      dateTriggered:
+        description: 'The date the task has been triggered'
+        type: \DateTime
+        example: 01-01-2020
     required:
       - name
 tags:
@@ -3518,7 +4546,7 @@ tags:
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: Queue
+    name: Task
     description: |
       All properties that the entity Employee holds.
       
@@ -3529,15 +4557,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the Queue resource'
-      write: 'write right to the Queue resource'
+      read: 'read right to the Task resource'
+      write: 'write right to the Task resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the Queue resource'
-      write: 'write right to the Queue resource'
+      read: 'read right to the Task resource'
+      write: 'write right to the Task resource'
 host: irc.zaakonline.nl
 servers:
   -
