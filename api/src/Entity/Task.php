@@ -44,7 +44,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *          }
  *     },
  * )
- * @ORM\Entity(repositoryClass="App\Repository\QueueRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
@@ -52,7 +52,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class)
  */
-class Queue
+class Task
 {
     /**
      * @var UuidInterface
