@@ -56,7 +56,8 @@ class QueueCommand extends Command
         if($task = $input->getOption('task')){
             $task = $this->em->getRepository('App:Task')->get($task);
             $task = $this->queueService->execute($task);
-            $io->success('Task '.$task->getId().' status'.$task->getStatusCode());
+
+            $io->success('Task '.$task->getId().' status:'.$task->getStatusCode());
 
             return;
         }
@@ -69,7 +70,7 @@ class QueueCommand extends Command
             $task = $this->queueService->execute($task);
 
             // iets regukoppelen aaN gebruiker
-            $io->success('Task '.$task->getId().' status'.$task->getStatusCode());
+            $io->success('Task '.$task->getId().' status:'.$task->getStatusCode());
         }
 
         return;

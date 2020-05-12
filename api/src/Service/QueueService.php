@@ -33,6 +33,7 @@ class QueueService
     {
         // Doe guzzle magie
         $client = New CLient();
+
         $request = new Request($task->getMethod(), $task->getEndpoint());
         $response = $client->send($request, ['timeout' => 2]);
 
