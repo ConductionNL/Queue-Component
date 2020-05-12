@@ -36,12 +36,12 @@ class QueueCommand extends Command
         $this
         ->setName('commonground:queue:tasks')
         // the short description shown while running "php bin/console list"
-        ->setDescription('Runs the curently queued task.')
+        ->setDescription('Runs the curently queued tasks')
 
         // the full command description shown when running the command with
         // the "--help" option
-        ->setHelp('This command allows you to create a new hel chart from the helm template')
-        ->addOption('tasj', null, InputOption::VALUE_OPTIONAL, 'Only run a single task by uuid');
+        ->setHelp('hier help tekst')
+        ->addOption('task', null, InputOption::VALUE_OPTIONAL, 'Only run a single task by uuid');
     }
 
     /**
@@ -49,11 +49,20 @@ class QueueCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
+        $io = new SymfonyStyle($input, $output);
+
+        $task = $input->getOption('task');
+
         // Haal tasks op
         $tasks = [];
 
+        // Geef weer hoeveel tasks we gana doen in een progress bar
         foreach($tasks as $task){
-            $this->queueService->execute($tasks);
+            $task = $this->queueService->execute($task);
+
+            // iets regukoppelen ana gebruik
+            $io->success('Task '.$task->getId().' status'.$task->getStatusCode());
         }
 
     }

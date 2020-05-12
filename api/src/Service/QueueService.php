@@ -27,7 +27,7 @@ class QueueService
     }
 
     /*
-     * Get a single resource from a common ground componant
+     * Run a single task a guzzle command
      *
      * @param Task $task the task to be executed
      * @return Task the executed task
@@ -35,6 +35,10 @@ class QueueService
     public function execute(Task $task)
     {
         // Doe guzzle magie
+        $client = New CLient();
+
+
+        // verwerk guzzle magie
 
         return $task;
     }
