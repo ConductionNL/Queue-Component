@@ -20,7 +20,7 @@ class QueueCommand extends Command
 {
 
     private $em;
-    private $co;
+    private $queueService;
 
     public function __construct(EntityManagerInterface $em, QueueService $queueService)
     {
@@ -52,18 +52,27 @@ class QueueCommand extends Command
 
         $io = new SymfonyStyle($input, $output);
 
-        $task = $input->getOption('task');
+        // Lets see if we have a single task
+        if($task = $input->getOption('task')){
+            $task = $this->em->getRepository('App:Task')->get($task);
+            $task = $this->queueService->execute($task);
+            $io->success('Task '.$task->getId().' status'.$task->getStatusCode());
 
-        // Haal tasks op
+            return;
+        }
+
+        // Get al teh exactubale tasks
         $tasks = $this->em->getRepository('App:Task')->findExecutable();
 
         // Geef weer hoeveel tasks we gana doen in een progress bar
         foreach($tasks as $task){
             $task = $this->queueService->execute($task);
 
-            // iets regukoppelen ana gebruik
+            // iets regukoppelen aaN gebruiker
             $io->success('Task '.$task->getId().' status'.$task->getStatusCode());
         }
+
+        return;
 
     }
 }

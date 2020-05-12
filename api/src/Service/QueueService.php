@@ -5,23 +5,19 @@
 namespace App\Service;
 
 use GuzzleHttp\Client;
-use Symfony\Component\Cache\Adapter\AdapterInterface as CacheInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 use App\Service\CommonGroundService;
 use App\Entity\CTask;
 
 class QueueService
 {
+    private $em;
     private $commonGroundService;
 
-    public function __construct(CommonGroundService $commonGroundService)
+    public function __construct(EntityManagerInterface $em, CommonGroundService $commonGroundService)
     {
-
+        $this->em = $em;
         $this->commonGroundService = $commonGroundService;
 
     }
@@ -37,8 +33,10 @@ class QueueService
         // Doe guzzle magie
         $client = New CLient();
 
-
         // verwerk guzzle magie
+
+        $task = $this->em->persist($task);
+        $this->em->flush();
 
         return $task;
     }
