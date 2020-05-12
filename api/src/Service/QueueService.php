@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use Doctrine\ORM\EntityManagerInterface;
 
 use App\Service\CommonGroundService;
-use App\Entity\CTask;
+use App\Entity\Task;
 
 class QueueService
 {
