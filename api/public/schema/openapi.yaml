@@ -4130,12 +4130,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-11 11:02:15'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-11 11:02:15'
     required:
       - name
   Task-write:
@@ -4318,12 +4318,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-11 11:02:15'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-11 11:02:15'
     required: []
   AuditTrail-write:
     properties:
@@ -4371,12 +4371,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-11 11:02:15'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-11 11:02:15'
     required: []
   ChangeLog-write:
     properties:
