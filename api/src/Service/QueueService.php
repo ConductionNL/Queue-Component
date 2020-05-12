@@ -33,10 +33,11 @@ class QueueService
     {
         // Doe guzzle magie
         $client = New CLient();
-
-        // verwerk guzzle magie
         $request = new Request($task->getMethod(), $task->getEndpoint());
         $response = $client->send($request, ['timeout' => 2]);
+
+        // verwerk guzzle magie
+        $task->setIets($response->getIets());
 
         $task = $this->em->persist($task);
         $this->em->flush();
