@@ -5,6 +5,7 @@
 namespace App\Service;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
 use App\Service\CommonGroundService;
@@ -34,6 +35,8 @@ class QueueService
         $client = New CLient();
 
         // verwerk guzzle magie
+        $request = new Request($task->getMethod(), $task->getEndpoint());
+        $response = $client->send($request, ['timeout' => 2]);
 
         $task = $this->em->persist($task);
         $this->em->flush();
