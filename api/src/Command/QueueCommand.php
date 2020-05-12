@@ -55,7 +55,7 @@ class QueueCommand extends Command
         $task = $input->getOption('task');
 
         // Haal tasks op
-        $tasks = [];
+        $tasks = $this->em->getRepository('App:Task')->findExecutable();
 
         // Geef weer hoeveel tasks we gana doen in een progress bar
         foreach($tasks as $task){
