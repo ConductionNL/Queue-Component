@@ -87,7 +87,7 @@ class Task
 
     /**
      * @var string The type of the task
-     * @example type
+     * @example GET
      * @Assert\Length(
      *      max = 255
      * )
@@ -216,7 +216,7 @@ class Task
     /**
      * @var string The process of the task
      *
-     * 
+     *
      * @Assert\Length(
      *      max = 255
      * )
@@ -229,17 +229,19 @@ class Task
      * @var DateTime The date the task has to be triggered
      * @example 01-01-2020
      *
+     *
      * @Groups({"read", "write"})
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateToTrigger;
 
     /**
      * @var DateTime The date the task has been triggered
-     * @example 01-01-2020
+     *
+     *
      *
      * @Groups({"read", "write"})
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateTriggered;
 

@@ -3741,10 +3741,12 @@ components:
           description: 'The date the task has to be triggered'
           type: string
           format: date-time
+          nullable: true
         dateTriggered:
           description: 'The date the task has been triggered'
           type: string
           format: date-time
+          nullable: true
         dateCreated:
           description: 'The moment this request was created'
           externalDocs:
@@ -3834,10 +3836,12 @@ components:
           description: 'The date the task has to be triggered'
           type: string
           format: date-time
+          nullable: true
         dateTriggered:
           description: 'The date the task has been triggered'
           type: string
           format: date-time
+          nullable: true
     'Task:jsonld-read':
       type: object
       description: ''
@@ -3932,10 +3936,12 @@ components:
           description: 'The date the task has to be triggered'
           type: string
           format: date-time
+          nullable: true
         dateTriggered:
           description: 'The date the task has been triggered'
           type: string
           format: date-time
+          nullable: true
         dateCreated:
           description: 'The moment this request was created'
           externalDocs:
@@ -4034,10 +4040,12 @@ components:
           description: 'The date the task has to be triggered'
           type: string
           format: date-time
+          nullable: true
         dateTriggered:
           description: 'The date the task has been triggered'
           type: string
           format: date-time
+          nullable: true
 definitions:
   Task-read:
     properties:
@@ -4064,7 +4072,7 @@ definitions:
       type:
         description: 'The type of the task'
         type: string
-        example: type
+        example: GET
         maxLength: 255
       status:
         description: 'The status of the task'
@@ -4125,17 +4133,16 @@ definitions:
       dateTriggered:
         description: 'The date the task has been triggered'
         type: \DateTime
-        example: 01-01-2020
       dateCreated:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-13 07:20:58'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-13 07:20:58'
     required:
       - name
   Task-write:
@@ -4158,7 +4165,7 @@ definitions:
       type:
         description: 'The type of the task'
         type: string
-        example: type
+        example: GET
         maxLength: 255
       status:
         description: 'The status of the task'
@@ -4211,9 +4218,61 @@ definitions:
       dateTriggered:
         description: 'The date the task has been triggered'
         type: \DateTime
-        example: 01-01-2020
     required:
       - name
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-13 07:20:58'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-13 07:20:58'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
   AuditTrail-read:
     properties:
       id:
@@ -4318,12 +4377,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-13 07:20:58'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-07 15:08:51'
+        example: '2020-05-13 07:20:58'
     required: []
   AuditTrail-write:
     properties:
@@ -4331,59 +4390,6 @@ definitions:
         description: 'A note conserning this log lin'
         type: string
         example: 'This log line looks suspicius'
-        maxLength: 2555
-    required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-05-07 15:08:51'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-05-07 15:08:51'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
         maxLength: 2555
     required: []
 tags:
@@ -4394,13 +4400,13 @@ tags:
       
       
   -
-    name: AuditTrail
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
@@ -4411,15 +4417,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
 host: irc.zaakonline.nl
 servers:
   -
