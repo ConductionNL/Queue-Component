@@ -13,7 +13,6 @@ use App\Service\CommonGroundService;
 use App\Entity\Task;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-
 class QueueService
 {
     private $em;
@@ -60,13 +59,6 @@ class QueueService
             $task->setResponseCode(400);
 
         }
-
-
-
-
-        //$task = $this->em->persist($task);
-        //$this->em->flush();
-
         return $task;
     }
 

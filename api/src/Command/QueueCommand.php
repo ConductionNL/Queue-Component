@@ -26,7 +26,7 @@ class QueueCommand extends Command
     {
         $this->em = $em;
         $this->queueService = $queueService;
-
+      
         parent::__construct();
     }
 
@@ -61,6 +61,7 @@ class QueueCommand extends Command
 
             $io->success('Task '.$task->getId().' status:'.$task->getResponseCode());
 
+
             return;
         }
 
@@ -80,7 +81,7 @@ class QueueCommand extends Command
                 $io->warning('Task '.$task->getId().' status:'.$task->getResponseCode().' Task does not need to be triggered yet');
 
             }
-
+            $io->success('Task '.$task->getId().' status:'.$task->getStatusCode());
         }
 
         return;
