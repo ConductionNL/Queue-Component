@@ -26,6 +26,8 @@ class QueueCommand extends Command
     {
         $this->em = $em;
         $this->queueService = $queueService;
+      
+        parent::__construct();
     }
 
     /**
@@ -57,19 +59,28 @@ class QueueCommand extends Command
             $task = $this->em->getRepository('App:Task')->get($task);
             $task = $this->queueService->execute($task);
 
-            $io->success('Task '.$task->getId().' status:'.$task->getStatusCode());
+            $io->success('Task '.$task->getId().' status:'.$task->getResponseCode());
+
 
             return;
         }
 
         // Get al teh exactubale tasks
-        $tasks = $this->em->getRepository('App:Task')->findExecutable();
+        $tasks = $this->em->getRepository('App:Task')->getExecutable();
+
 
         // Geef weer hoeveel tasks we gana doen in een progress bar
         foreach($tasks as $task){
             $task = $this->queueService->execute($task);
 
             // iets regukoppelen aaN gebruiker
+            if($task->getResponseCode() == 200){
+
+                $io->success('Task '.$task->getId().' status:'.$task->getResponseCode().' Task has been completed');
+            } else {
+                $io->warning('Task '.$task->getId().' status:'.$task->getResponseCode().' Task does not need to be triggered yet');
+
+            }
             $io->success('Task '.$task->getId().' status:'.$task->getStatusCode());
         }
 
