@@ -2,19 +2,17 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ApiResource(
@@ -49,6 +47,7 @@ class Task
 
     /**
      * @var string The name of this Task
+     *
      * @example Task name
      *
      * @Gedmo\Versioned
@@ -63,6 +62,7 @@ class Task
 
     /**
      * @var string The description of this Task
+     *
      * @example Task description
      *
      * @Gedmo\Versioned
@@ -76,6 +76,7 @@ class Task
 
     /**
      * @var string The endpoint that the request was made to
+     *
      * @example endpoint
      * @Assert\Length(
      *      max = 255
@@ -87,6 +88,7 @@ class Task
 
     /**
      * @var string The type of the task
+     *
      * @example GET
      * @Assert\Length(
      *      max = 255
@@ -98,6 +100,7 @@ class Task
 
     /**
      * @var string The status of the task
+     *
      * @example finished
      * @Assert\Length(
      *      max = 255
@@ -159,6 +162,7 @@ class Task
 
     /**
      * @var string The endpoint of the webHook
+     *
      * @example endpoint
      * @Assert\Length(
      *      max = 255
@@ -170,6 +174,7 @@ class Task
 
     /**
      * @var string The status of the webHook
+     *
      * @example finished
      * @Assert\Length(
      *      max = 255
@@ -227,6 +232,7 @@ class Task
 
     /**
      * @var DateTime The date the task has to be triggered
+     *
      * @example 01-01-2020
      *
      *
@@ -264,7 +270,6 @@ class Task
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
-
 
     public function getId()
     {
