@@ -46,6 +46,21 @@ class Task
     private $id;
 
     /**
+     * @var string The primary resource used int this task
+     *
+     * @example https://vrc.zaakonline.nl/requests/e2984465-190a-4562-829e-a8cca81aa35d
+     *
+     * @Gedmo\Versioned
+     * @Assert\Length(
+     *     max = 255
+     * )
+     * @Assert\NotNull
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resource;
+
+    /**
      * @var string The name of this Task
      *
      * @example Task name
@@ -56,7 +71,7 @@ class Task
      * )
      * @Assert\NotNull
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
@@ -106,7 +121,7 @@ class Task
      *      max = 255
      * )
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $status;
 
@@ -168,7 +183,7 @@ class Task
      *      max = 255
      * )
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $webHookEndpoint;
 
@@ -180,7 +195,7 @@ class Task
      *      max = 255
      * )
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $webHookStatus;
 
@@ -274,6 +289,18 @@ class Task
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getResource(): ?string
+    {
+        return $this->resource;
+    }
+
+    public function setResource(string $name): self
+    {
+        $this->resource = $resource;
+
+        return $this;
     }
 
     public function getName(): ?string
