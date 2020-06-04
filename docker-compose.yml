@@ -107,7 +107,7 @@ services:
     tmpfs:
       - /usr/local/var/varnish:exec
     ports:
-      - "81"
+      - "81:80"
     environment:
       - BACKENDS=php
 
