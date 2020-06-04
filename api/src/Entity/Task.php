@@ -104,12 +104,15 @@ class Task
     /**
      * @var string The type of the task
      *
+     *
      * @example GET
      * @Assert\Length(
-     *      max = 255
+     *      max = 6,
+     *      max = 3
      * )
+     * @Assert\Choice({"POST", "GET","PUT","UPDATE","DELETE"})
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=6)
      */
     private $type = "POST";
 
@@ -118,10 +121,11 @@ class Task
      *
      * @example completed
      * @Assert\Length(
-     *      max = 255
+     *      max = 12
      * )
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="string")
+     * @Assert\Choice({"waiting", "in progress","failed","completed"})
+     * @Groups({"read"})
+     * @ORM\Column(type="string", length=12)
      */
     private $status = "waiting";
 
