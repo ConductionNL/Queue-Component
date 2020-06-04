@@ -4128,13 +4128,11 @@ definitions:
       type:
         description: 'The type of the task'
         type: string
-        example: GET
-        maxLength: 3
+        example: POST
       status:
         description: 'The status of the task'
         type: string
         example: completed
-        maxLength: 12
       requestHeaders:
         description: 'The request headers supplied by client'
         type: array
@@ -4193,12 +4191,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 06:53:39'
+        example: '2020-06-04 10:17:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 06:53:39'
+        example: '2020-06-04 10:17:30'
     required:
       - name
       - endpoint
@@ -4227,8 +4225,7 @@ definitions:
       type:
         description: 'The type of the task'
         type: string
-        example: GET
-        maxLength: 3
+        example: POST
       requestHeaders:
         description: 'The request headers supplied by client'
         type: array
@@ -4382,12 +4379,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 06:53:39'
+        example: '2020-06-04 10:17:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 06:53:39'
+        example: '2020-06-04 10:17:30'
     required: []
   AuditTrail-write:
     properties:
@@ -4435,12 +4432,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 06:53:39'
+        example: '2020-06-04 10:17:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 06:53:39'
+        example: '2020-06-04 10:17:30'
     required: []
   ChangeLog-write:
     properties:
