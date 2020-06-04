@@ -4,14 +4,11 @@
 
 namespace App\Service;
 
-
+use App\Entity\Task;
+use Doctrine\ORM\EntityManagerInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
-use Doctrine\ORM\EntityManagerInterface;
-
-use App\Service\CommonGroundService;
-use App\Entity\Task;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Conduction\CommonGroundBundle\Service\CommonGroundService;
 
 class QueueService
 {
@@ -22,7 +19,6 @@ class QueueService
     {
         $this->em = $em;
         $this->commonGroundService = $commonGroundService;
-
     }
 
     /*
@@ -32,11 +28,10 @@ class QueueService
      * @return Task the executed task
      */
 
-
     public function execute(Task $task)
     {
         // Doe guzzle magic
-        $client = New Client();
+        $client = new Client();
 
         $request = new Request($task->getType(), $task->getEndpoint());
         $response = $client->send($request, ['timeout' => 2]);
@@ -45,21 +40,18 @@ class QueueService
         $body = json_decode($response->getBody(), true);
 
         // verwerk guzzle magie
-        if($date2->format('Y-m-d H:i:s.u') < $date){
+        if ($date2->format('Y-m-d H:i:s.u') < $date) {
             echo $response->getBody()->getContents();
             $task->setResponseCode($response->getStatusCode());
             $task->setResponseBody($body);
             $task->setResponseHeaders($response->getHeaders());
-            $task->setStatus("completed");
+            $task->setStatus('completed');
             $task->setDateTriggered(new \DateTime());
             $task->setResponseCode($response->getStatusCode());
-
         } else {
-
             $task->setResponseCode(400);
-
         }
+
         return $task;
     }
-
 }

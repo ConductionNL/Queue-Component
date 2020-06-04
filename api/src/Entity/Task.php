@@ -2,19 +2,17 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ApiResource(
@@ -48,7 +46,22 @@ class Task
     private $id;
 
     /**
+     * @var string The primary resource used int this task
+     *
+     * @example https://vrc.zaakonline.nl/requests/e2984465-190a-4562-829e-a8cca81aa35d
+     *
+     * @Gedmo\Versioned
+     * @Assert\Length(
+     *     max = 255
+     * )
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resource;
+
+    /**
      * @var string The name of this Task
+     *
      * @example Task name
      *
      * @Gedmo\Versioned
@@ -57,12 +70,13 @@ class Task
      * )
      * @Assert\NotNull
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string The description of this Task
+     *
      * @example Task description
      *
      * @Gedmo\Versioned
@@ -76,10 +90,12 @@ class Task
 
     /**
      * @var string The endpoint that the request was made to
+     *
      * @example endpoint
      * @Assert\Length(
      *      max = 255
      * )
+     * @Assert\NotNull
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */
@@ -87,25 +103,31 @@ class Task
 
     /**
      * @var string The type of the task
+     *
+     *
      * @example GET
      * @Assert\Length(
-     *      max = 255
+     *      max = 6,
+     *      max = 3
      * )
+     * @Assert\Choice({"POST", "GET","PUT","UPDATE","DELETE"})
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=6)
      */
-    private $type;
+    private $type = "POST";
 
     /**
      * @var string The status of the task
-     * @example finished
+     *
+     * @example completed
      * @Assert\Length(
-     *      max = 255
+     *      max = 12
      * )
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @Assert\Choice({"waiting", "in progress","failed","completed"})
+     * @Groups({"read"})
+     * @ORM\Column(type="string", length=12)
      */
-    private $status;
+    private $status = "waiting";
 
     /**
      * @var array The request headers supplied by client
@@ -159,23 +181,25 @@ class Task
 
     /**
      * @var string The endpoint of the webHook
+     *
      * @example endpoint
      * @Assert\Length(
      *      max = 255
      * )
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $webHookEndpoint;
 
     /**
      * @var string The status of the webHook
+     *
      * @example finished
      * @Assert\Length(
      *      max = 255
      * )
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $webHookStatus;
 
@@ -227,6 +251,7 @@ class Task
 
     /**
      * @var DateTime The date the task has to be triggered
+     *
      * @example 01-01-2020
      *
      *
@@ -265,10 +290,21 @@ class Task
      */
     private $dateModified;
 
-
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getResource(): ?string
+    {
+        return $this->resource;
+    }
+
+    public function setResource(string $name): self
+    {
+        $this->resource = $resource;
+
+        return $this;
     }
 
     public function getName(): ?string
