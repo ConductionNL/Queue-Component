@@ -54,7 +54,6 @@ class Task
      * @Assert\Length(
      *     max = 255
      * )
-     * @Assert\NotNull
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -96,6 +95,7 @@ class Task
      * @Assert\Length(
      *      max = 255
      * )
+     * @Assert\NotNull
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */
@@ -111,19 +111,19 @@ class Task
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */
-    private $type;
+    private $type = "POST";
 
     /**
      * @var string The status of the task
      *
-     * @example finished
+     * @example completed
      * @Assert\Length(
      *      max = 255
      * )
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string")
      */
-    private $status;
+    private $status = "waiting";
 
     /**
      * @var array The request headers supplied by client
