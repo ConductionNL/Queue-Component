@@ -22,16 +22,13 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * @return Task[] Returns an array of Task objects
      */
-
     public function getExecutable()
     {
         return $this->createQueryBuilder('t')
             ->Where('t.dateTriggered IS NULL')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-
 
     /*
     public function findOneBySomeField($value): ?Task

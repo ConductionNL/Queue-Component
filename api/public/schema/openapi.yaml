@@ -2020,6 +2020,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[resource]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[name]'
           in: query
           required: false
@@ -2312,6 +2321,22 @@ paths:
             type: string
         -
           name: 'id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: resource
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'resource[]'
           in: query
           required: false
           schema:
@@ -3666,9 +3691,14 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
+        resource:
+          description: 'The primary resource used int this task'
+          type: string
+          nullable: true
         name:
           description: 'The name of this Task'
           type: string
+          nullable: true
         description:
           description: 'The description of this Task'
           type: string
@@ -3714,9 +3744,11 @@ components:
         webHookEndpoint:
           description: 'The endpoint of the webHook'
           type: string
+          nullable: true
         webHookStatus:
           description: 'The status of the webHook'
           type: string
+          nullable: true
         webHookCode:
           description: 'The code of the webHook'
           type: integer
@@ -3763,15 +3795,19 @@ components:
           nullable: true
       required:
         - name
+        - endpoint
     Task-write:
       type: object
       description: ''
-      required:
-        - name
       properties:
+        resource:
+          description: 'The primary resource used int this task'
+          type: string
+          nullable: true
         name:
           description: 'The name of this Task'
           type: string
+          nullable: true
         description:
           description: 'The description of this Task'
           type: string
@@ -3781,9 +3817,6 @@ components:
           type: string
         type:
           description: 'The type of the task'
-          type: string
-        status:
-          description: 'The status of the task'
           type: string
         requestHeaders:
           description: 'The request headers supplied by client'
@@ -3813,9 +3846,11 @@ components:
         webHookEndpoint:
           description: 'The endpoint of the webHook'
           type: string
+          nullable: true
         webHookStatus:
           description: 'The status of the webHook'
           type: string
+          nullable: true
         application:
           description: 'The application that made the task'
           externalDocs:
@@ -3842,6 +3877,9 @@ components:
           type: string
           format: date-time
           nullable: true
+      required:
+        - name
+        - endpoint
     'Task:jsonld-read':
       type: object
       description: ''
@@ -3861,9 +3899,14 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
+        resource:
+          description: 'The primary resource used int this task'
+          type: string
+          nullable: true
         name:
           description: 'The name of this Task'
           type: string
+          nullable: true
         description:
           description: 'The description of this Task'
           type: string
@@ -3909,9 +3952,11 @@ components:
         webHookEndpoint:
           description: 'The endpoint of the webHook'
           type: string
+          nullable: true
         webHookStatus:
           description: 'The status of the webHook'
           type: string
+          nullable: true
         webHookCode:
           description: 'The code of the webHook'
           type: integer
@@ -3958,11 +4003,10 @@ components:
           nullable: true
       required:
         - name
+        - endpoint
     'Task:jsonld-write':
       type: object
       description: ''
-      required:
-        - name
       properties:
         '@context':
           readOnly: true
@@ -3973,9 +4017,14 @@ components:
         '@type':
           readOnly: true
           type: string
+        resource:
+          description: 'The primary resource used int this task'
+          type: string
+          nullable: true
         name:
           description: 'The name of this Task'
           type: string
+          nullable: true
         description:
           description: 'The description of this Task'
           type: string
@@ -3985,9 +4034,6 @@ components:
           type: string
         type:
           description: 'The type of the task'
-          type: string
-        status:
-          description: 'The status of the task'
           type: string
         requestHeaders:
           description: 'The request headers supplied by client'
@@ -4017,9 +4063,11 @@ components:
         webHookEndpoint:
           description: 'The endpoint of the webHook'
           type: string
+          nullable: true
         webHookStatus:
           description: 'The status of the webHook'
           type: string
+          nullable: true
         application:
           description: 'The application that made the task'
           externalDocs:
@@ -4046,6 +4094,9 @@ components:
           type: string
           format: date-time
           nullable: true
+      required:
+        - name
+        - endpoint
 definitions:
   Task-read:
     properties:
@@ -4054,6 +4105,11 @@ definitions:
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
+      resource:
+        description: 'The primary resource used int this task'
+        type: string
+        example: 'https://vrc.zaakonline.nl/requests/e2984465-190a-4562-829e-a8cca81aa35d'
+        maxLength: 255
       name:
         description: 'The name of this Task'
         type: string
@@ -4072,13 +4128,11 @@ definitions:
       type:
         description: 'The type of the task'
         type: string
-        example: GET
-        maxLength: 255
+        example: POST
       status:
         description: 'The status of the task'
         type: string
-        example: finished
-        maxLength: 255
+        example: completed
       requestHeaders:
         description: 'The request headers supplied by client'
         type: array
@@ -4137,16 +4191,22 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-26 11:59:47'
+        example: '2020-06-04 12:20:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-26 11:59:47'
+        example: '2020-06-04 12:20:12'
     required:
       - name
+      - endpoint
   Task-write:
     properties:
+      resource:
+        description: 'The primary resource used int this task'
+        type: string
+        example: 'https://vrc.zaakonline.nl/requests/e2984465-190a-4562-829e-a8cca81aa35d'
+        maxLength: 255
       name:
         description: 'The name of this Task'
         type: string
@@ -4165,13 +4225,7 @@ definitions:
       type:
         description: 'The type of the task'
         type: string
-        example: GET
-        maxLength: 255
-      status:
-        description: 'The status of the task'
-        type: string
-        example: finished
-        maxLength: 255
+        example: POST
       requestHeaders:
         description: 'The request headers supplied by client'
         type: array
@@ -4220,6 +4274,7 @@ definitions:
         type: \DateTime
     required:
       - name
+      - endpoint
   AuditTrail-read:
     properties:
       id:
@@ -4324,12 +4379,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-26 11:59:47'
+        example: '2020-06-04 12:20:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-26 11:59:47'
+        example: '2020-06-04 12:20:12'
     required: []
   AuditTrail-write:
     properties:
@@ -4377,12 +4432,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-26 11:59:47'
+        example: '2020-06-04 12:20:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-26 11:59:47'
+        example: '2020-06-04 12:20:12'
     required: []
   ChangeLog-write:
     properties:
