@@ -26,6 +26,8 @@ class QueueCommand extends Command
     {
         $this->em = $em;
         $this->queueService = $queueService;
+
+        parent::__construct();
     }
 
     /**

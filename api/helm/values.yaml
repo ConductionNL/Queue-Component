@@ -6,15 +6,15 @@ settings:
   registryBase: docker.io/conduction
   projectName: qc
   name: qc
-  title: queue Component
+  title: Queue Component
   version: V.0.1
   id: 
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   type: component
-  repro: https://github.com/ConductionNL/queue-component
-  demo: qc.huwelijksplanner.online
+  repro: https://github.com/ConductionNL/proto-component
+  demo: qc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/qc-php
-  domain: huwelijksplanner.online
+  domain: conduction.nl
   subdomain: qc
   organisationName: Conduction
   email: info@conduction.nl
@@ -27,7 +27,7 @@ settings:
   cache: 1
   replicaCount: 1
   corsAllowOrigin: ['*']
-  trustedHosts: '^localhost$|^127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$|^(.+\.)?zaakonline.nl'
+  trustedHosts: '^localhost$|^127.0.0.1$|^(.+\.)?conduction\.nl$'
   pullPolicy: Always
   # You will need these proxies on kubernetes
   trustedProxies:
