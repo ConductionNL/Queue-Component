@@ -293,7 +293,7 @@ class Task
         return $this->resource;
     }
 
-    public function setResource(string $name): self
+    public function setResource(string $resource): self
     {
         $this->resource = $resource;
 
