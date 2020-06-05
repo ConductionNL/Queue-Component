@@ -30,28 +30,37 @@ class QueueService
 
     public function execute(Task $task)
     {
-        // Doe guzzle magic
-        $client = new Client();
+        // @todo afvangen of de taak wel moet worden uitgevoerd?
 
-        $request = new Request($task->getType(), $task->getEndpoint());
-        $response = $client->send($request, ['timeout' => 2]);
-        $date = date('Y-m-d H:i:s.u', time());
-        $date2 = $task->getDateToTrigger();
-        $body = json_decode($response->getBody(), true);
+        // Lets first see if the endpoint exisits to start with
 
-        // verwerk guzzle magie
-        if ($date2->format('Y-m-d H:i:s.u') < $date) {
-            echo $response->getBody()->getContents();
-            $task->setResponseCode($response->getStatusCode());
-            $task->setResponseBody($body);
-            $task->setResponseHeaders($response->getHeaders());
-            $task->setStatus('completed');
-            $task->setDateTriggered(new \DateTime());
-            $task->setResponseCode($response->getStatusCode());
-        } else {
-            $task->setResponseCode(400);
+        $curl = curl_init($task->getEndpoint());
+        curl_setopt($curl, CURLOPT_NOBODY, true);
+        $result = curl_exec($curl);
+        if(!$result){
+            $task->setStatus('failed');
+            $this->em->persist($task);
+            $this->em->flush();
+            return $task;
         }
 
+        $client = new Client();
+        $request = new Request($task->getType(), $task->getEndpoint());
+        $response = $client->send($request, ['timeout' => 2, 'http_errors ' => false]);
+
+        $task->setDateTriggered(new \DateTime());
+        $task->setResponseCode($response->getStatusCode());
+        $task->setResponseHeaders($response->getHeaders());
+
+        if($response->getStatusCode() && $response->getStatusCode() >= 200 && $response->getStatusCode() < 300){
+            $task->setStatus('completed');
+        }
+        else{
+            $task->setStatus('failed');
+        }
+
+        $this->em->persist($task);
+        $this->em->flush();
         return $task;
     }
 }

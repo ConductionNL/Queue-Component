@@ -25,7 +25,8 @@ class TaskRepository extends ServiceEntityRepository
     public function getExecutable()
     {
         return $this->createQueryBuilder('t')
-            ->Where('t.dateTriggered IS NULL')
+            ->Where('t.dateToTrigger <= CURRENT_TIMESTAMP()')
+            ->andWhere('t.dateTriggered IS NULL')
             ->getQuery()
             ->getResult();
     }
