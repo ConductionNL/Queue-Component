@@ -4191,12 +4191,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 12:20:12'
+        example: '2020-06-05 04:59:10'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 12:20:12'
+        example: '2020-06-05 04:59:10'
     required:
       - name
       - endpoint
@@ -4379,12 +4379,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 12:20:12'
+        example: '2020-06-05 04:59:10'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 12:20:12'
+        example: '2020-06-05 04:59:10'
     required: []
   AuditTrail-write:
     properties:
@@ -4432,12 +4432,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 12:20:12'
+        example: '2020-06-05 04:59:10'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 12:20:12'
+        example: '2020-06-05 04:59:10'
     required: []
   ChangeLog-write:
     properties:

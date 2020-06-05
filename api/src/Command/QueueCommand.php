@@ -54,6 +54,8 @@ class QueueCommand extends Command
 
         $io = new SymfonyStyle($input, $output);
 
+        $io->title('Executing queed tasks');
+
         // Lets see if we have a single task
         if($task = $input->getOption('task')){
             $task = $this->em->getRepository('App:Task')->get($task);
@@ -67,14 +69,21 @@ class QueueCommand extends Command
         // Get al teh exactubale tasks
         $tasks = $this->em->getRepository('App:Task')->getExecutable();
 
-        // Geef weer hoeveel tasks we gana doen in een progress bar
+        $io->text('Found '.count($tasks).' tasks to execute');
+
+
+        if(count($tasks) > 0){
+            $io->progressStart(count($tasks));
+        }
+
         foreach($tasks as $task){
             $task = $this->queueService->execute($task);
 
-            // iets regukoppelen aaN gebruiker
-            $io->success('Task '.$task->getId().' status:'.$task->getStatusCode());
+            $io->progressAdvance();
+            // iets terugkoppelen aan de gebruiker
         }
 
+        $io->success('All done');
         return;
 
     }
