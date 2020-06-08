@@ -288,6 +288,13 @@ class Task
         return $this->id;
     }
 
+    public function setId(\Ramsey\Uuid\Uuid $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getResource(): ?string
     {
         return $this->resource;
