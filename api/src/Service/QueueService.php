@@ -46,20 +46,20 @@ class QueueService
 
 
         // Lets create a request body if we dont have one
-        if(!$task->getRequestBody() || empty($task->getRequestBody())){
+        //if(!$task->getRequestBody() || empty($task->getRequestBody())){
             $body = [
                 "id"=>$this->commonGroundService->getUuidFromUrl($task->getResource()),
                 "resource"=>$task->getResource()
             ];
-            $task->setRequestBody(json_encode($body));
-        }
+        //}
 
+        $task->setRequestBody(json_encode($body));
         $this->em->persist($task);
         $this->em->flush();
 
         $client = new Client();
-        $request = new Request($task->getType(), $task->getEndpoint(), ['body' => $task->getRequestBody()]);
-        $response = $client->send($request, ['timeout' => 2, 'http_errors ' => false,'body' => $task->getRequestBody()]);
+        $request = new Request($task->getType(), $task->getEndpoint(), ['json' => $body]);
+        $response = $client->send($request, ['timeout' => 2, 'http_errors ' => false]);
 
         $task->setDateTriggered(new \DateTime());
         $task->setResponseCode($response->getStatusCode());
