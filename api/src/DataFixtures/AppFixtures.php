@@ -29,8 +29,8 @@ class AppFixtures extends Fixture
         $task->setResource("https://vrc.mijncluster.nl/requests/456918bc-8419-4e54-90eb-bafd3d18c6ff");
         $task->setName("Voorbeeld task");
         $task->setDescription("Een voorbeeld task om aan te tonen dat de task systemetiek werkt");
-        $task->setEndpoint("https://www.google.nl");
-        $task->setType("GET");
+        $task->setEndpoint("https://timeblockr.pinkprivatecloud.nl/gaas-web/commonground/audit");
+        $task->setType("POST");
         $task->setDateToTrigger(New \Datetime);
 
         $manager->persist($task);
