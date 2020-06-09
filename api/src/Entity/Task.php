@@ -104,13 +104,12 @@ class Task
     /**
      * @var string The type of the task
      *
-     *
      * @example POST
      * @Assert\Choice({"POST", "GET","PUT","UPDATE","DELETE"})
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=6)
      */
-    private $type = "POST";
+    private $type = 'POST';
 
     /**
      * @var string The status of the task
@@ -120,7 +119,7 @@ class Task
      * @Groups({"read"})
      * @ORM\Column(type="string", length=12)
      */
-    private $status = "waiting";
+    private $status = 'waiting';
 
     /**
      * @var array The request headers supplied by client
@@ -388,12 +387,11 @@ class Task
     }
 
     public function getRequestBody(): ?string
-
     {
         return $this->requestBody;
     }
 
-    public function setRequestBody( $requestBody): self
+    public function setRequestBody($requestBody): self
     {
         $this->requestBody = $requestBody;
 
