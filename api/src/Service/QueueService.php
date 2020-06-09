@@ -59,7 +59,7 @@ class QueueService
 
         $client = new Client();
         $request = new Request($task->getType(), $task->getEndpoint(), ['json' => $body]);
-        $response = $client->send($request, ['timeout' => 2, 'http_errors ' => false]);
+        $response = $client->send($request, ['timeout' => 20, 'http_errors ' => false, 'json' => $body]);
 
         $task->setDateTriggered(new \DateTime());
         $task->setResponseCode($response->getStatusCode());
