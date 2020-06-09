@@ -44,8 +44,18 @@ class QueueService
             return $task;
         }
 
+
+        // Lets create a request body if we dont have one
+        if(!$task->getRequestBody() || empty($task->getRequestBody())){
+            $body = [
+                "id"=>$this->commonGroundService->getUuidFromUrl($task->getResource()),
+                "resource"=>$task->getResource()
+            ];
+            $task->setRequestBody(json_encode($body));
+        }
+
         $client = new Client();
-        $request = new Request($task->getType(), $task->getEndpoint());
+        $request = new Request($task->getType(), $task->getEndpoint(), ['body' => $task->getRequestBody()]);
         $response = $client->send($request, ['timeout' => 2, 'http_errors ' => false]);
 
         $task->setDateTriggered(new \DateTime());

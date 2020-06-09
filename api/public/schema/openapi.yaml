@@ -4224,15 +4224,23 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-06-09 08:22:43'
+=======
+        example: '2020-06-09 09:10:45'
+>>>>>>> master
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-06-09 08:22:43'
       log:
         description: 'The guzzle response when a task fails'
         type: string
+=======
+        example: '2020-06-09 09:10:45'
+>>>>>>> master
     required:
       - name
       - endpoint
@@ -4415,12 +4423,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-06-09 08:22:43'
+=======
+        example: '2020-06-09 09:10:45'
+>>>>>>> master
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-06-09 08:22:43'
+=======
+        example: '2020-06-09 09:10:45'
+>>>>>>> master
     required: []
   AuditTrail-write:
     properties:
@@ -4468,12 +4484,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-06-09 08:22:43'
+=======
+        example: '2020-06-09 09:10:45'
+>>>>>>> master
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-06-09 08:22:43'
+=======
+        example: '2020-06-09 09:10:45'
+>>>>>>> master
     required: []
   ChangeLog-write:
     properties:

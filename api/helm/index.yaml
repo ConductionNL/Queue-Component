@@ -3,14 +3,14 @@ entries:
   qc:
   - apiVersion: v1
     appVersion: V.0.1
-    created: "2020-06-05T12:09:33.8277615Z"
+    created: "2020-06-09T09:09:30.942858675Z"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: 3cd8320c683a33b471c5f6d8347c66031024300d555c321b69ff6ef5528c9016
+    digest: e022ddcab96a11c5f2ccd8e59fcac311e1faa4656e2effbb05e6d5860ce56126
     home: qc.zaakonline.nl
     icon: qc.zaakonline.nl
     name: qc
     urls:
     - qc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-06-05T12:09:33.823339Z"
+generated: "2020-06-09T09:09:30.927761575Z"

@@ -131,12 +131,12 @@ class Task
     private $requestHeaders = [];
 
     /**
-     * @var array The request body supplied by client
+     * @var string The request body supplied by client
      *
      * @Groups({"read", "write"})
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $requestBody = [];
+    private $requestBody;
 
     /**
      * @var array The the headers of the response
@@ -387,12 +387,13 @@ class Task
         return $this;
     }
 
-    public function getRequestBody(): ?array
+    public function getRequestBody(): ?string
+
     {
         return $this->requestBody;
     }
 
-    public function setRequestBody(array $requestBody): self
+    public function setRequestBody( $requestBody): self
     {
         $this->requestBody = $requestBody;
 
