@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if ($this->params->get('app_domain') != "mijncluster.nl" && strpos($this->params->get('app_domain'), "mijncluster.nl") == false) {
-            //return false;
+            return false;
         }
 
         $id = Uuid::fromString('19f6b927-2a63-470f-a024-7efe98008de7');
