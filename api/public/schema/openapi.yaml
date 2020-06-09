@@ -2464,7 +2464,7 @@ paths:
             type: array
             items:
               type: string
-          style: deepObject
+          style: form
           explode: true
         -
           name: responseHeaders
@@ -3744,9 +3744,8 @@ components:
             type: string
         requestBody:
           description: 'The request body supplied by client'
-          type: array
-          items:
-            type: string
+          type: string
+          nullable: true
         responseHeaders:
           description: 'The the headers of the response'
           type: array
@@ -3854,9 +3853,8 @@ components:
             type: string
         requestBody:
           description: 'The request body supplied by client'
-          type: array
-          items:
-            type: string
+          type: string
+          nullable: true
         responseHeaders:
           description: 'The the headers of the response'
           type: array
@@ -3956,9 +3954,8 @@ components:
             type: string
         requestBody:
           description: 'The request body supplied by client'
-          type: array
-          items:
-            type: string
+          type: string
+          nullable: true
         responseHeaders:
           description: 'The the headers of the response'
           type: array
@@ -4075,9 +4072,8 @@ components:
             type: string
         requestBody:
           description: 'The request body supplied by client'
-          type: array
-          items:
-            type: string
+          type: string
+          nullable: true
         responseHeaders:
           description: 'The the headers of the response'
           type: array
@@ -4171,7 +4167,7 @@ definitions:
         type: array
       requestBody:
         description: 'The request body supplied by client'
-        type: array
+        type: string
       responseHeaders:
         description: 'The the headers of the response'
         type: array
@@ -4224,23 +4220,15 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-06-09 08:22:43'
-=======
-        example: '2020-06-09 09:10:45'
->>>>>>> master
+        example: '2020-06-09 09:54:22'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-06-09 08:22:43'
+        example: '2020-06-09 09:54:22'
       log:
         description: 'The guzzle response when a task fails'
         type: string
-=======
-        example: '2020-06-09 09:10:45'
->>>>>>> master
     required:
       - name
       - endpoint
@@ -4275,7 +4263,7 @@ definitions:
         type: array
       requestBody:
         description: 'The request body supplied by client'
-        type: array
+        type: string
       responseHeaders:
         description: 'The the headers of the response'
         type: array
@@ -4423,20 +4411,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-06-09 08:22:43'
-=======
-        example: '2020-06-09 09:10:45'
->>>>>>> master
+        example: '2020-06-09 09:54:22'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-06-09 08:22:43'
-=======
-        example: '2020-06-09 09:10:45'
->>>>>>> master
+        example: '2020-06-09 09:54:22'
     required: []
   AuditTrail-write:
     properties:
@@ -4484,20 +4464,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-06-09 08:22:43'
-=======
-        example: '2020-06-09 09:10:45'
->>>>>>> master
+        example: '2020-06-09 09:54:22'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-06-09 08:22:43'
-=======
-        example: '2020-06-09 09:10:45'
->>>>>>> master
+        example: '2020-06-09 09:54:22'
     required: []
   ChangeLog-write:
     properties:

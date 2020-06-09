@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if ($this->params->get('app_domain') != "mijncluster.nl" && strpos($this->params->get('app_domain'), "mijncluster.nl") == false) {
-            return false;
+            //return false;
         }
 
         $id = Uuid::fromString('19f6b927-2a63-470f-a024-7efe98008de7');
@@ -29,8 +29,8 @@ class AppFixtures extends Fixture
         $task->setResource("https://vrc.mijncluster.nl/requests/456918bc-8419-4e54-90eb-bafd3d18c6ff");
         $task->setName("Voorbeeld task");
         $task->setDescription("Een voorbeeld task om aan te tonen dat de task systemetiek werkt");
-        $task->setEndpoint("https://www.webhook.mijncluster.nl");
-        $task->setType("GET");
+        $task->setEndpoint("https://timeblockr.pinkprivatecloud.nl/gaas-web/commonground/audit");
+        $task->setType("POST");
         $task->setDateToTrigger(New \Datetime);
 
         $manager->persist($task);
