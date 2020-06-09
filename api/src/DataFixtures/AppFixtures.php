@@ -21,11 +21,6 @@ class AppFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if ($this->params->get('app_domain') != "mijncluster.nl" && strpos($this->params->get('app_domain'), "mijncluster.nl") == false) {
-            return false;
-        }
-
-        // Lets make sure we only run these fixtures on larping enviroment
-        if (strpos($this->params->get('app_domain'), 'conduction.nl') == false) {
             //return false;
         }
 
