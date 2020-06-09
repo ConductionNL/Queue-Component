@@ -4,21 +4,16 @@
 
 namespace App\Command;
 
-use App\Service\NLXLogService;
+use App\Service\QueueService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Exception\InvalidOptionException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use Doctrine\ORM\EntityManagerInterface;
-use App\Service\QueueService;
-
-
 class QueueCommand extends Command
 {
-
     private $em;
     private $queueService;
 
@@ -51,13 +46,12 @@ class QueueCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $io = new SymfonyStyle($input, $output);
 
         $io->title('Executing queed tasks');
 
         // Lets see if we have a single task
-        if($task = $input->getOption('task')){
+        if ($task = $input->getOption('task')) {
             $task = $this->em->getRepository('App:Task')->get($task);
             $task = $this->queueService->execute($task);
 
@@ -71,12 +65,11 @@ class QueueCommand extends Command
 
         $io->text('Found '.count($tasks).' tasks to execute');
 
-
-        if(count($tasks) > 0){
+        if (count($tasks) > 0) {
             $io->progressStart(count($tasks));
         }
 
-        foreach($tasks as $task){
+        foreach ($tasks as $task) {
             $task = $this->queueService->execute($task);
 
             $io->progressAdvance();
@@ -84,7 +77,5 @@ class QueueCommand extends Command
         }
 
         $io->success('All done');
-        return;
-
     }
 }
