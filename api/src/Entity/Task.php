@@ -283,6 +283,14 @@ class Task
      */
     private $dateModified;
 
+    /**
+     * @var string The guzzle response when a task fails
+     *
+     * @Groups({"read"})
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $log;
+
     public function getId()
     {
         return $this->id;
@@ -555,6 +563,18 @@ class Task
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
         $this->dateModified = $dateModified;
+
+        return $this;
+    }
+
+    public function getLog(): ?string
+    {
+        return $this->log;
+    }
+
+    public function setLog(?string $log): self
+    {
+        $this->log = $log;
 
         return $this;
     }

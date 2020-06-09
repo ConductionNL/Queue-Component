@@ -56,6 +56,7 @@ class QueueService
             $task->setStatus('completed');
         }
         else{
+            $task->setLog($response->getBody());
             $task->setStatus('failed');
         }
 
