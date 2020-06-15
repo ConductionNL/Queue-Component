@@ -104,13 +104,12 @@ class Task
     /**
      * @var string The type of the task
      *
-     *
      * @example POST
      * @Assert\Choice({"POST", "GET","PUT","UPDATE","DELETE"})
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=6)
      */
-    private $type = "POST";
+    private $type = 'POST';
 
     /**
      * @var string The status of the task
@@ -120,7 +119,7 @@ class Task
      * @Groups({"read"})
      * @ORM\Column(type="string", length=12)
      */
-    private $status = "waiting";
+    private $status = 'waiting';
 
     /**
      * @var array The request headers supplied by client
@@ -131,12 +130,12 @@ class Task
     private $requestHeaders = [];
 
     /**
-     * @var array The request body supplied by client
+     * @var string The request body supplied by client
      *
      * @Groups({"read", "write"})
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $requestBody = [];
+    private $requestBody;
 
     /**
      * @var array The the headers of the response
@@ -283,9 +282,24 @@ class Task
      */
     private $dateModified;
 
+    /**
+     * @var string The guzzle response when a task fails
+     *
+     * @Groups({"read"})
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $log;
+
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId(\Ramsey\Uuid\Uuid $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getResource(): ?string
@@ -372,12 +386,12 @@ class Task
         return $this;
     }
 
-    public function getRequestBody(): ?array
+    public function getRequestBody(): ?string
     {
         return $this->requestBody;
     }
 
-    public function setRequestBody(array $requestBody): self
+    public function setRequestBody($requestBody): self
     {
         $this->requestBody = $requestBody;
 
@@ -548,6 +562,18 @@ class Task
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
         $this->dateModified = $dateModified;
+
+        return $this;
+    }
+
+    public function getLog(): ?string
+    {
+        return $this->log;
+    }
+
+    public function setLog(?string $log): self
+    {
+        $this->log = $log;
 
         return $this;
     }

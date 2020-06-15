@@ -4,21 +4,16 @@
 
 namespace App\Command;
 
-use App\Service\NLXLogService;
+use App\Service\QueueService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Exception\InvalidOptionException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use Doctrine\ORM\EntityManagerInterface;
-use App\Service\QueueService;
-
-
 class QueueCommand extends Command
 {
-
     private $em;
     private $queueService;
 
@@ -51,11 +46,12 @@ class QueueCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $io = new SymfonyStyle($input, $output);
 
+        $io->title('Executing queed tasks');
+
         // Lets see if we have a single task
-        if($task = $input->getOption('task')){
+        if ($task = $input->getOption('task')) {
             $task = $this->em->getRepository('App:Task')->get($task);
             $task = $this->queueService->execute($task);
 
@@ -67,15 +63,19 @@ class QueueCommand extends Command
         // Get al teh exactubale tasks
         $tasks = $this->em->getRepository('App:Task')->getExecutable();
 
-        // Geef weer hoeveel tasks we gana doen in een progress bar
-        foreach($tasks as $task){
-            $task = $this->queueService->execute($task);
+        $io->text('Found '.count($tasks).' tasks to execute');
 
-            // iets regukoppelen aaN gebruiker
-            $io->success('Task '.$task->getId().' status:'.$task->getStatusCode());
+        if (count($tasks) > 0) {
+            $io->progressStart(count($tasks));
         }
 
-        return;
+        foreach ($tasks as $task) {
+            $task = $this->queueService->execute($task);
 
+            $io->progressAdvance();
+            // iets terugkoppelen aan de gebruiker
+        }
+
+        $io->success('All done');
     }
 }
