@@ -102,6 +102,19 @@ class Task
     private $endpoint;
 
     /**
+     * @var string code of the task
+     *
+     * @example code
+     * @Assert\Length(
+     *      max = 255
+     * )
+     * @Assert\NotNull
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $code;
+
+    /**
      * @var string The type of the task
      *
      * @example POST
@@ -310,6 +323,18 @@ class Task
     public function setResource(string $resource): self
     {
         $this->resource = $resource;
+
+        return $this;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
 
         return $this;
     }
