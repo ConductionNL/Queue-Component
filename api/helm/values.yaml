@@ -14,7 +14,7 @@ settings:
   repro: https://github.com/ConductionNL/proto-component
   demo: qc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/qc-php
-  domain: conduction.nl
+  domain: dev
   subdomain: qc
   organisationName: Conduction
   email: info@conduction.nl
