@@ -400,6 +400,15 @@ paths:
             type: integer
             default: 1
         -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
           name: Authorization
           description: 'The JWT of the entity performing the request'
           in: header
@@ -1297,6 +1306,15 @@ paths:
             type: integer
             default: 1
         -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
           name: Authorization
           description: 'The JWT of the entity performing the request'
           in: header
@@ -2056,6 +2074,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[code]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[type]'
           in: query
           required: false
@@ -2403,6 +2430,22 @@ paths:
           style: form
           explode: true
         -
+          name: code
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'code[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: type
           in: query
           required: false
@@ -2698,6 +2741,15 @@ paths:
           schema:
             type: integer
             default: 1
+        -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -3731,6 +3783,10 @@ components:
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+        code:
+          description: 'code of the task'
+          type: string
+          nullable: true
         type:
           description: 'The type of the task'
           type: string
@@ -3843,6 +3899,10 @@ components:
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+        code:
+          description: 'code of the task'
+          type: string
+          nullable: true
         type:
           description: 'The type of the task'
           type: string
@@ -3941,6 +4001,10 @@ components:
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+        code:
+          description: 'code of the task'
+          type: string
+          nullable: true
         type:
           description: 'The type of the task'
           type: string
@@ -4062,6 +4126,10 @@ components:
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+        code:
+          description: 'code of the task'
+          type: string
+          nullable: true
         type:
           description: 'The type of the task'
           type: string
@@ -4154,6 +4222,11 @@ definitions:
         type: string
         example: endpoint
         maxLength: 255
+      code:
+        description: 'code of the task'
+        type: string
+        example: code
+        maxLength: 255
       type:
         description: 'The type of the task'
         type: string
@@ -4220,12 +4293,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-09 11:29:10'
+        example: '2020-06-18 08:38:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-09 11:29:10'
+        example: '2020-06-18 08:38:39'
       log:
         description: 'The guzzle response when a task fails'
         type: string
@@ -4253,6 +4326,11 @@ definitions:
         description: 'The endpoint that the request was made to'
         type: string
         example: endpoint
+        maxLength: 255
+      code:
+        description: 'code of the task'
+        type: string
+        example: code
         maxLength: 255
       type:
         description: 'The type of the task'
@@ -4345,12 +4423,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-09 11:29:10'
+        example: '2020-06-18 08:38:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-09 11:29:10'
+        example: '2020-06-18 08:38:39'
     required: []
   ChangeLog-write:
     properties:
@@ -4464,12 +4542,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-09 11:29:10'
+        example: '2020-06-18 08:38:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-09 11:29:10'
+        example: '2020-06-18 08:38:39'
     required: []
   AuditTrail-write:
     properties:
