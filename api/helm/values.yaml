@@ -7,15 +7,18 @@ settings:
   projectName: qc
   name: qc
   title: Queue Component
-  version: V.0.1
+  version: V1.0
+  majorVersion: v1
   id: 
-  description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
+  description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   type: component
   repro: https://github.com/ConductionNL/proto-component
   demo: qc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/qc-php
-  domain: dev
+  domain: conduction.nl
   subdomain: qc
+  subpath: qc
+  subpathRouting: true
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
