@@ -119,4 +119,4 @@ dependsOn:
 
 installations:
     - type: helm
-      url: "https://github.com/ConductionNL/Queue-Component/raw/master/api/helm/qc-0.1.0.tgz"
+      url: "https://raw.githubusercontent.com/Queue-Component/agendaservice/master/api/helm/"
