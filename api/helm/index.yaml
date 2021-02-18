@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2020-12-02T08:57:53.5666248Z"
+    created: "2021-02-18T05:36:55.5129148Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -37,14 +37,14 @@ entries:
   qc:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2020-12-02T08:57:53.5524675Z"
+    created: "2021-02-18T05:36:55.4813036Z"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: 10cf4ee3187a78c873fe005d9d59a527aa29a78b68f9533c8848f0ac15f5a8d5
+    digest: 6db52e9e87d5f5f38eccbefcc4ae8c38a15d30ced1818064be3d956179ee987b
     home: qc.zaakonline.nl
     icon: qc.zaakonline.nl
     name: qc
     urls:
     - qc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-12-02T08:57:53.5383402Z"
+generated: "2021-02-18T05:36:55.424125Z"
