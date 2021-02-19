@@ -21,7 +21,6 @@ parameters:
     env(AUDITTRAIL_ENABLED): ""
     env(NOTIFICATION_ENABLED):
     env(APP_VERSION): "1.0.0"
-    env(APP_MAJOR_VERSION): "1.0.0"
     env(APP_NAME): "Proto Component"
     env(APP_DESCRIPTION): "A commonground component"
     env(APP_DOMAIN): "zaakonline.nl"
@@ -36,9 +35,6 @@ parameters:
     env(APP_BUILD_ALL_FIXTURES):
     env(APP_URL): "http://localhost"
     env(APP_CONTAINER): ""
-    env(APP_TITLE): ""
-    env(APP_ID): ""
-    env(APP_TYPE): ""
   
     app_env: "%env(APP_ENV)%"
     app_container: "%env(APP_CONTAINER)%"
@@ -70,11 +66,6 @@ parameters:
     artifacthub_id: "%env(ARTIFACTHUB_ID)%"
     artifacthub_user: "%env(ARTIFACTHUB_USER)%"
     helm_repository: "%env(HELM_REPOSITORY)%"
-    app_commonground_key: "%env(APP_COMMONGROUND_KEY)%"
-    app_major_version: "%env(APP_MAJOR_VERSION)%"
-    app_title: "%env(APP_TITLE)%"
-    app_id: "%env(APP_ID)%"
-    app_type: "%env(APP_TYPE)%"
 
     # Busnes Engine
     env(APP_COMMONGROUND_BE_LOCATION): "https://ac.%env(APP_DOMAIN)%"
@@ -298,11 +289,6 @@ twig:
         artifacthub_id: "%env(ARTIFACTHUB_ID)%"
         artifacthub_user: "%env(ARTIFACTHUB_USER)%"
         helm_repository: "%env(HELM_REPOSITORY)%"
-        app_commonground_key: "%env(APP_COMMONGROUND_KEY)%"
-        app_major_version: "%env(APP_MAJOR_VERSION)%"
-        app_title: "%env(APP_TITLE)%"
-        app_id: "%env(APP_ID)%"
-        app_type: "%env(APP_TYPE)%"
 
         # Security Details
         app_commonground_id: "%env(APP_COMMONGROUND_ID)%"

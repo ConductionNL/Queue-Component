@@ -1,4 +1,4 @@
-# qc
+# queue-component
 
 Description
 ----
