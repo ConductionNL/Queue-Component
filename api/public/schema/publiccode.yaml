@@ -121,6 +121,3 @@ installations:
     - type: helm
       url: "https://raw.githubusercontent.com/ConductionNL/queue-component/master/api/helm/"
 
-installations:
-    - type: helm
-      url: "https://raw.githubusercontent.com/Queue-Component/agendaservice/master/api/helm/"
